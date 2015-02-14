@@ -36,7 +36,7 @@ public class IngredientsExtractor implements Extractor {
     private Element postProcessElement(Element element) {
         removeBadges(element);
         convertLinksToAbsoluteUrls(element);
-        // addExternalTargetToLinks(element);
+        convertActionsToAbsoluteUrls(element);
         return element;
     }
 
@@ -60,6 +60,13 @@ public class IngredientsExtractor implements Extractor {
         Elements urls = element.select("a[href]");
         for (Element urlElement : urls) {
             urlElement.attr("href", urlElement.absUrl("href"));
+        }
+    }
+    
+    private void convertActionsToAbsoluteUrls(Element element) {
+        Elements formActions = element.select("form[action=OrderItemAdd]");
+        for (Element formAction : formActions) {
+            formAction.attr("action", formAction.absUrl("action"));
         }
     }
 
