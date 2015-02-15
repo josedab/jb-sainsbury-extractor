@@ -2,6 +2,7 @@ package com.technobitia.sainsbury.examples;
 
 import com.technobitia.sainsbury.client.SainsburyClient;
 import com.technobitia.sainsbury.exceptions.SainsburyException;
+import com.technobitia.sainsbury.model.Recipe;
 import com.technobitia.sainsbury.request.SainsburyRequest;
 
 public class IngredientsExtractorApp {
@@ -12,7 +13,8 @@ public class IngredientsExtractorApp {
                                                         .withContentType("html")
                                                         .build();
         SainsburyClient client = new SainsburyClient();
-        String text = client.extractInformation(request);
+        Recipe recipe = client.extractInformation(request);
+        String text = recipe.getIngredientsToBuy();
         System.out.println(text);
 
     }
