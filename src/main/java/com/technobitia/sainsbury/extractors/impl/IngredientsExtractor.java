@@ -1,39 +1,22 @@
 package com.technobitia.sainsbury.extractors.impl;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.technobitia.sainsbury.extractors.Extractor;
-import com.technobitia.sainsbury.request.SainsburyRequest;
 
-public class IngredientsExtractor implements Extractor {
+public class IngredientsExtractor extends AbstractExtractor implements Extractor {
 
     private static final String INGREDIENTS_SELECTOR = "#ingredients.section";
     private static final String BADGES_SELECTOR = "div.badges";
 
-    public String extract(SainsburyRequest request, Document doc) {
-        checkNotNull(request);
-        checkNotNull(doc);
-        
-        String result = null;
-        Elements results = doc.select(INGREDIENTS_SELECTOR);
-        Element infoBox = results.first();
-        if (infoBox != null) {
-            infoBox = postProcessElement(infoBox);
-            if (request.getContentType().equalsIgnoreCase("html")) {
-                result = infoBox.toString();
-            } else {
-                result = infoBox.text();
-            }
-        }
-
-        return result;
+    @Override
+    protected String getSectionSelector() {
+        return INGREDIENTS_SELECTOR;
     }
-    
-    private Element postProcessElement(Element element) {
+
+    @Override
+    protected Element postProcessElement(Element element) {
         removeBadges(element);
         convertLinksToAbsoluteUrls(element);
         convertActionsToAbsoluteUrls(element);
