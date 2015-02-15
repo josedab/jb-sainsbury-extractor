@@ -18,5 +18,4 @@ public class RecipeMethodExtractor extends AbstractExtractor implements Extracto
         return element;
     }
     
-
 }

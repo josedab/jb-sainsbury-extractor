@@ -7,7 +7,7 @@ import com.technobitia.sainsbury.extractors.Extractor;
 
 public class IngredientsListExtractor extends AbstractExtractor implements Extractor {
 
-    private static final String INGREDIENTS_LIST_SELECTOR = "#ingredientsList";
+    private static final String INGREDIENTS_LIST_SELECTOR = ".ingredientsList";
     private static final String LINKS_SELECTOR = ".links";
 
     @Override
