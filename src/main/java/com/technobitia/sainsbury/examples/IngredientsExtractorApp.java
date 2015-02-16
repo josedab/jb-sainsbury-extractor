@@ -8,7 +8,7 @@ import com.technobitia.sainsbury.request.SainsburyRequest;
 public class IngredientsExtractorApp {
 
     public static void main(String[] args) throws SainsburyException {
-        String url = "http://www.sainsburys.co.uk/shop/gb/groceries/find-recipes/recipes/chicken-poultry-and-game/roast-chicken#ingredients";
+        String url = "http://www.sainsburys.co.uk/shop/gb/groceries/find-recipes/recipes/cakes-and-treats/apple-and-blackberry-flapjacks";
         SainsburyRequest request = new SainsburyRequest.Builder(url)
                                                         .withContentType("html")
                                                         .build();

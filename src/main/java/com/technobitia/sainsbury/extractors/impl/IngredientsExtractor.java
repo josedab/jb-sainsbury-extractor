@@ -44,6 +44,11 @@ public class IngredientsExtractor extends AbstractExtractor implements Extractor
         for (Element urlElement : urls) {
             urlElement.attr("href", urlElement.absUrl("href"));
         }
+        
+        Elements images = element.select("img[src]");
+        for (Element imageElement : images) {
+            imageElement.attr("src", imageElement.absUrl("src"));
+        }
     }
     
     private void convertActionsToAbsoluteUrls(Element element) {
