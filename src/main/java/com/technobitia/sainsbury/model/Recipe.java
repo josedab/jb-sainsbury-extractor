@@ -8,6 +8,7 @@ public class Recipe {
     private String ingredientsList;
     private String nutritionFacts;
     private String stepsToCook;
+    private String videoId;
     
     private Recipe(Builder builder) {
         url = builder.url;
@@ -16,6 +17,7 @@ public class Recipe {
         ingredientsList = builder.ingredientsList;
         nutritionFacts = builder.nutritionFacts;
         stepsToCook = builder.stepsToCook;
+        videoId = builder.videoId;
     }
     
     public String getUrl() {
@@ -37,6 +39,10 @@ public class Recipe {
         return stepsToCook;
     }
     
+    public String getVideoId() {
+        return videoId;
+    }
+
     public static class Builder {
         private final String url;
         private String title;
@@ -44,6 +50,7 @@ public class Recipe {
         private String ingredientsList;
         private String nutritionFacts;
         private String stepsToCook;
+        private String videoId;
 
         public Builder(String url) {
             this.url = url;
@@ -74,6 +81,10 @@ public class Recipe {
             return this;
         }
 
+        public Builder withVideoId(String videoId) {
+            this.videoId = videoId;
+            return this;
+        }
         public Recipe build() {
             return new Recipe(this);
         }
